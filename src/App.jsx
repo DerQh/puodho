@@ -1,56 +1,20 @@
-import "./App.css";
+import Navbar from "./components/Navbar";
+import MainBody from "./components/MainBody";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
-      <nav>
-        <div>
-          <img src="" alt="logo" />
-          <h1>FARMFRESH</h1>
-        </div>
-        <div>
-          <div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <div>
-            <ul>
-              <li>
-                <a href="">How it works</a>
-                <ul>
-                  <li>For Farmers</li>
-                  <li>For Buyers</li>
-                  <li>Agritourism</li>
-                </ul>
-              </li>
-              <li>Pricing</li>
-              <li>
-                <a href="">Local Sourcing</a>
-                <ul>
-                  <li>Wholesalers</li>
-                </ul>
-              </li>
-              <li>Seller's Guide</li>
-              <li>
-                <a href="">About Us</a>
-                <ul>
-                  <li>Our Story</li>
-                  <li>Our Values</li>
-                  <li>FAQ</li>
-                  <li>Team</li>
-                  <li>Careers</li>
-                  <li>Contact</li>
-                </ul>
-              </li>
-              <li>Shop</li>
-              <li>Desktop Version</li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
+      <MainBody />
+      <Footer />
     </>
   );
 }
 
 export default App;
+
+//     --wp--preset--font-size--small: 13px;
+// --wp--preset--font-size--medium: 20px;
+// --wp--preset--font-size--large: 36px;
+// --wp--preset--font-size--x-large: 42px;
