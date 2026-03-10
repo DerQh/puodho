@@ -53,7 +53,7 @@ const DownloadContainer = styled.div`
   }
 `;
 const ImageContainer = styled.div`
-  background-image: url("/src/assets/farming.jpg");
+  background-image: url("/farming.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -275,10 +275,10 @@ function Body() {
         <p>Discover and connect with local food and farms near you.</p>
         <DownloadContainer>
           <a href="">
-            <img src="/src/assets/app store.png" alt="google play logo" />
+            <img src="/app store.png" alt="google play logo" />
           </a>
           <a href="">
-            <img src="/src/assets/google store.png" alt="app store logo" />
+            <img src="/google store.png" alt="app store logo" />
           </a>
         </DownloadContainer>
       </MainContainer>
