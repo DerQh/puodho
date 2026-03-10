@@ -4,22 +4,38 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background: #b3e5fc; /* Green background */
-  color: #427719; /* Dark text for contrast */
+  padding: 40px;
+  background-color: #e5f4ff;
+  color: #5c9132;
+  @media (max-width: 1200px) {
+    padding: 60px;
+    /* Padding for medium screens */
+  }
+
+  @media (max-width: 768px) {
+    padding: 50px;
+    /* Padding for small screens */
+  }
+
+  @media (max-width: 480px) {
+    padding: 30px; /* Padding for extra small screens */
+  }
 `;
 
 const LogoContainer = styled.div`
   display: flex;
   align-items: center;
+  border-radius: 50%;
 
   img {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
   }
 
   h1 {
     font-size: 1.5rem;
+    padding-left: 4px;
     margin: 0;
   }
 `;
@@ -30,11 +46,11 @@ const ToggleIcons = styled.div`
   cursor: pointer;
 
   div {
-    width: 25px;
-    height: 3px;
-    background: white;
-    margin: 3px 0;
-    border-radius: 5px;
+    width: 20px;
+    height: 2px;
+    background-color: #5c9132;
+    margin: 4px 0;
+    border-radius: 10px;
   }
 `;
 
@@ -50,7 +66,7 @@ const DropdownMenu = styled.div`
     position: absolute;
     top: 100%;
     left: 0;
-    background: #4caf50; /* Same background color */
+    background: #4caf50;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1;
   }
@@ -95,7 +111,7 @@ export default function Navbar() {
     <Nav>
       <LogoContainer>
         <img src="/src/assets/logo1.jpg" alt="logo" />
-        <h1>FARMFRESH</h1>
+        <h1>AFARMER</h1>
       </LogoContainer>
       <MenuContainer>
         <ToggleIcons>
