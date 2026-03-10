@@ -110,7 +110,7 @@ export default function Navbar() {
   return (
     <Nav>
       <LogoContainer>
-        <img src="/src/assets/logo1.jpg" alt="logo" />
+        <img src="/logo1.jpg" alt="logo" />
         <h1>AFARMER</h1>
       </LogoContainer>
       <MenuContainer>

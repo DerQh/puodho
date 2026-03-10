@@ -285,7 +285,7 @@ function Body() {
       <ImageContainer>
         <img
           loading="lazy"
-          src="/src/assets/app screenshot.png"
+          src="/app screenshot.png"
           alt=" app phone screenshot"
         />
       </ImageContainer>
@@ -299,7 +299,7 @@ function Body() {
         </HowitWorks>
         <BuySellGrowContainers>
           <BuySellGrowContainer>
-            <img src="/src/assets/buy.png" alt="buy image" />
+            <img src="/buy.png" alt="buy image" />
             <h2>Buy</h2>
             <p>
               Search on a map using a keyword for produce that is on sale.
@@ -307,7 +307,7 @@ function Body() {
             </p>
           </BuySellGrowContainer>
           <BuySellGrowContainer>
-            <img src="src/assets/grow.png" alt="sell image" />
+            <img src="/sell.png" alt="sell image" />
             <h2>Sell</h2>
             <p>
               Create a free listing to sell your homegrown produce, chicken
@@ -315,7 +315,7 @@ function Body() {
             </p>
           </BuySellGrowContainer>
           <BuySellGrowContainer>
-            <img src="src/assets/sell.png" alt="grow image" />
+            <img src="/grow.png" alt="grow image" />
             <h2>Grow</h2>
             <p>
               Connect with the consumer and wholesale buyers for your homegrown
@@ -377,7 +377,7 @@ function Body() {
       </div>
       <div>
         <div>
-          <img src="/src/assets/logo.png" alt="logo  " />
+          <img src="/logo.png" alt="logo  " />
           <h1>FARMFRESH</h1>
         </div>
         <p>
