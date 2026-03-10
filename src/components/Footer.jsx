@@ -1,16 +1,10 @@
 import styled from "styled-components";
 
 const Footer = styled.footer`
-  background: linear-gradient(180deg, #071032 0%, #0b1226 100%);
-  color: #e6eef8;
-  font-family:
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial;
-  padding: 36px 16px;
+  background-color: #77a54f;
+  color: #ffffff;
+  font-family: "Dosis", sans-serif;
+  padding: 20px 40px;
 `;
 
 const Inner = styled.div`
@@ -48,7 +42,6 @@ const Title = styled.span`
 
 const Desc = styled.p`
   margin: 0;
-  color: #a8c2ff;
   font-size: 14px;
 `;
 
@@ -59,12 +52,10 @@ const News = styled.div`
 const Heading = styled.h4`
   margin: 0 0 8px 0;
   font-size: 15px;
-  color: #a8c2ff;
 `;
 
 const Note = styled.p`
   margin: 0 0 12px 0;
-  color: #9fbfff;
 `;
 
 const Form = styled.form`
@@ -85,7 +76,7 @@ const Input = styled.input`
   padding: 10px 12px;
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(255, 255, 255, 0.03);
+  background: #fff;
   color: #e6eef8;
   outline: none;
   font-size: 14px;
@@ -94,18 +85,17 @@ const Input = styled.input`
     border-color 0.12s ease;
 
   &::placeholder {
-    color: rgba(230, 240, 255, 0.5);
+    color: rgba(71, 74, 79, 0.5);
   }
 
   &:focus {
-    border-color: rgba(99, 102, 241, 0.95);
-    box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.06);
+    border-color: rgba(70, 70, 70, 0.95);
   }
 `;
 
 const Button = styled.button`
-  background: linear-gradient(180deg, #60a5fa, #3b82f6);
-  color: #04223a;
+  background-color: #5c9132;
+  color: #fff;
   border: none;
   padding: 10px 14px;
   border-radius: 8px;
@@ -120,7 +110,7 @@ const Button = styled.button`
     transform: translateY(1px);
   }
   &:focus {
-    outline: 3px solid rgba(99, 102, 241, 0.18);
+    outline: 3px solid rgba(0, 0, 0, 0.18);
     outline-offset: 2px;
   }
 `;
@@ -139,7 +129,7 @@ const SocialLink = styled.a`
   height: 40px;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.03);
-  color: #e6eef8;
+  color: #fff;
 `;
 
 const Links = styled.div`
@@ -160,6 +150,11 @@ const List = styled.ul`
 
 const ListItem = styled.li`
   margin: 8px 0;
+  text-decoration: none;
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
 `;
 
 const LegalCol = styled.div`
@@ -171,7 +166,7 @@ const LegalCol = styled.div`
 
 const LegalNote = styled.p`
   margin: 0;
-  color: #a8c2ff;
+  color: #fff;
 `;
 
 const LegalLinks = styled.div`
@@ -181,7 +176,8 @@ const LegalLinks = styled.div`
 `;
 
 const LegalLink = styled.a`
-  color: #9fbfff;
+  color: #fff;
+  text-decoration: none;
 `;
 
 export default function ResponsiveFooter() {
@@ -191,25 +187,11 @@ export default function ResponsiveFooter() {
         <Top>
           <Brand>
             <Logo href="/" aria-label="Homepage">
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 48 48"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <rect width="48" height="48" rx="8" fill="#2563EB" />
-                <path
-                  d="M14 30c4-6 10-14 18-10-6 2-10 8-12 12-2 4-6 4-6 4s0-2 0-6z"
-                  fill="#fff"
-                />
-              </svg>
-              <Title>VibeFooter</Title>
+              <img src="/logo1.png " alt="" />
+              <Title>Afarmer</Title>
             </Logo>
             <Desc>
-              Clean, responsive footer built with React and plain CSS.
+              Discover fresh produce, support local farmers, and enjoy. 
             </Desc>
           </Brand>
 
@@ -240,15 +222,18 @@ export default function ResponsiveFooter() {
             </Form>
 
             <Social aria-hidden="false">
-              <SocialLink href="https://twitter.com" aria-label="Twitter">
-                {/* Twitter SVG Icon */}
-              </SocialLink>
-              <SocialLink href="https://github.com" aria-label="GitHub">
-                {/* GitHub SVG Icon */}
-              </SocialLink>
-              <SocialLink href="https://www.linkedin.com" aria-label="LinkedIn">
-                {/* LinkedIn SVG Icon */}
-              </SocialLink>
+              <SocialLink
+                href="https://twitter.com"
+                aria-label="Twitter"
+              ></SocialLink>
+              <SocialLink
+                href="https://github.com"
+                aria-label="GitHub"
+              ></SocialLink>
+              <SocialLink
+                href="https://www.linkedin.com"
+                aria-label="LinkedIn"
+              ></SocialLink>
             </Social>
           </News>
         </Top>
@@ -310,11 +295,11 @@ export default function ResponsiveFooter() {
 
           <LegalCol>
             <LegalNote>
-              © {new Date().getFullYear()} VibeFooter — Built with care.
+              © {new Date().getFullYear()} Afarmer — Built with care.
             </LegalNote>
             <LegalLinks>
-              <LegalLink href="#terms">Terms</LegalLink>
-              <LegalLink href="#privacy">Privacy</LegalLink>
+              <LegalLink href="#terms">Terms |</LegalLink>
+              <LegalLink href="#privacy">Privacy </LegalLink>
               <LegalLink href="#security">Security</LegalLink>
             </LegalLinks>
           </LegalCol>

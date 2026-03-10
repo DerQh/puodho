@@ -6,16 +6,14 @@ const MainContainer = styled.div`
   color: #000000;
   @media (max-width: 1200px) {
     padding: 60px;
-    /* Padding for medium screens */
   }
 
   @media (max-width: 768px) {
     padding: 50px;
-    /* Padding for small screens */
   }
 
   @media (max-width: 480px) {
-    padding: 30px; /* Padding for extra small screens */
+    padding: 30px;
   }
 
   p {
@@ -60,6 +58,7 @@ const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 20px;
+  padding-bottom: 20px;
   img {
     max-width: 80%;
     height: auto;
@@ -255,6 +254,18 @@ const InputDiv = styled.div`
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    &:focus {
+      outline: none;
+      border-color: transparent;
+    }
+
+    &::placeholder {
+      color: #999;
+      font-size: 14px;
+    }
   }
   div {
     display: flex;
@@ -262,6 +273,114 @@ const InputDiv = styled.div`
 
     input {
       flex: 1;
+    }
+  }
+`;
+
+const InputDiv2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* gap: 10px; */
+  text-align: left;
+  width: 100%;
+
+  p {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #000000;
+    margin-bottom: 5px;
+
+    a {
+      color: #000000;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  input,
+  textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    max-width: 100%;
+    width: 100%;
+    min-height: 40px;
+    box-sizing: border-box;
+    &:focus {
+      outline: none;
+      border-color: transparent;
+    }
+
+    &::placeholder {
+      color: #999;
+      font-size: 14px;
+    }
+  }
+`;
+
+const FeedbackContainer = styled.div`
+  color: #313131;
+  text-align: center;
+  font-size: 24px;
+  font-family: "Dosis", sans-serif;
+  font-style: italic;
+  padding: 20px 40px;
+  @media (max-width: 1200px) {
+    padding: 60px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 50px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 30px;
+  }
+`;
+
+const Footer = styled.footer`
+  display: none;
+  background-color: #77a54f;
+  color: #000000;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; */
+  padding: 20px 40px;
+  font-family: "Montserrat", sans-serif;
+
+  @media (max-width: 1200px) {
+    padding: 60px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 50px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 30px;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0;
     }
   }
 `;
@@ -319,8 +438,7 @@ function Body() {
             <h2>Grow</h2>
             <p>
               Connect with the consumer and wholesale buyers for your homegrown
-              produce without the hassle of branding, a website, or
-              advertising.{" "}
+              produce without the hassle of branding, a website, or advertising.
             </p>
           </BuySellGrowContainer>
         </BuySellGrowContainers>
@@ -356,28 +474,31 @@ function Body() {
             </div>
           </InputDiv>
 
-          <div>
-            <p>Institution</p>
+          <InputDiv2>
+            <p>Institution/Company</p>
             <input placeholder="Institution Name" type="text" />
-          </div>
-          <div>
-            <p>Message</p>
-            <textarea placeholder="Your Message" rows="4"></textarea>
-          </div>
+          </InputDiv2>
+          <InputDiv2>
+            <p>
+              What are you interested in selling or purchasing from
+              <a href=""> Afarmer </a> that are in the local farms ?
+            </p>
+            <textarea rows="4"></textarea>
+          </InputDiv2>
           <button>Submit Inquiry</button>
         </FormContainer>
       </InquiryContainer>
-      <div>
-        "Puodho has resulted in both professional and personal relationships
+      <FeedbackContainer>
+        "Afarmer has resulted in both professional and personal relationships
         with increible customes an people in my local community. Not only have I
-        been able to \n network and make sales but I never eaten better or
-        cleaner in my life! I downloaded it when I was the only producer withi
-        50 kms and now there are ovr 30 in my village alone! I can't wait to see
-        what else Puodo has up their sleeve!" - Jeff Ondoro.
-      </div>
-      <div>
+        been able to network and make sales but I never eaten better or cleaner
+        in my life! I downloaded it when I was the only producer within 50 kms
+        and now there are over 30 in my village alone! I can't wait to see what
+        else Puodo has up their sleeve!" - Jeff Ondoro.
+      </FeedbackContainer>
+      <Footer>
         <div>
-          <img src="/logo.png" alt="logo  " />
+          <img src="/logo1.jpg" alt="logo " />
           <h1>FARMFRESH</h1>
         </div>
         <p>
@@ -405,7 +526,7 @@ function Body() {
             Returns
           </p>
         </div>
-      </div>
+      </Footer>
     </>
   );
 }
