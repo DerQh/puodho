@@ -225,6 +225,7 @@ const FormContainer = styled.div`
     align-self: center;
     margin-top: 20px;
     max-width: 200px;
+    border: 2px solid #5c9132;
 
     &:hover {
       background-color: #ffffff;
@@ -346,10 +347,6 @@ const Footer = styled.footer`
   display: none;
   background-color: #77a54f;
   color: #000000;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center; */
   padding: 20px 40px;
   font-family: "Montserrat", sans-serif;
 
@@ -515,10 +512,10 @@ function Body() {
         <button>Sign Up for News & Updates </button>
         <p>support@famrfresh.com</p>
         <div>
-          <img src="" alt="facebook logo" />
+          {/* <img src="" alt="facebook logo" />
           <img src="" alt="x logo" />
           <img src="" alt="instagram logo" />
-          <img src="" alt="pintrest logo" />
+          <img src="" alt="pintrest logo" /> */}
         </div>
         <div>
           <p>

@@ -1,6 +1,9 @@
 import styled from "styled-components";
+import DropDownMenu from "./DropDownMenu";
+import { useState } from "react";
 
 const Nav = styled.nav`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,6 +29,7 @@ const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   border-radius: 50%;
+  cursor: pointer;
 
   img {
     width: 60px;
@@ -107,6 +111,13 @@ const DropdownMenu = styled.div`
 `;
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    console.log("Menu toggled:", !isOpen);
+  };
+
   return (
     <Nav>
       <LogoContainer>
@@ -114,7 +125,7 @@ export default function Navbar() {
         <h1>AFARMER</h1>
       </LogoContainer>
       <MenuContainer>
-        <ToggleIcons>
+        <ToggleIcons onClick={toggleMenu}>
           <div></div>
           <div></div>
           <div></div>
@@ -161,6 +172,7 @@ export default function Navbar() {
           </ul>
         </DropdownMenu>
       </MenuContainer>
+      <DropDownMenu isOpen={isOpen}></DropDownMenu>
     </Nav>
   );
 }

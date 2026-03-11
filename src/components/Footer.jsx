@@ -33,6 +33,12 @@ const Logo = styled.a`
   align-items: center;
   color: inherit;
   text-decoration: none;
+
+  img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
 `;
 
 const Title = styled.span`
@@ -154,6 +160,11 @@ const ListItem = styled.li`
   a {
     text-decoration: none;
     color: #fff;
+    transition: color 0.12s ease;
+
+    &:hover {
+      color: #f9f9f9;
+    }
   }
 `;
 
@@ -178,6 +189,12 @@ const LegalLinks = styled.div`
 const LegalLink = styled.a`
   color: #fff;
   text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
 `;
 
 export default function ResponsiveFooter() {
@@ -187,16 +204,16 @@ export default function ResponsiveFooter() {
         <Top>
           <Brand>
             <Logo href="/" aria-label="Homepage">
-              <img src="/logo1.png " alt="" />
-              <Title>Afarmer</Title>
+              <img src="/logo1.jpg" alt="" />
+              {/* <Title>Afarmer</Title> */}
             </Logo>
             <Desc>
-              Discover fresh produce, support local farmers, and enjoy. 
+              Discover fresh produce, support local farmers, and enjoy.
             </Desc>
           </Brand>
 
           <News>
-            <Heading>Stay in the loop</Heading>
+            {/* <Heading>Stay in the loop</Heading> */}
             <Note>Subscribe for product updates and tips.</Note>
             <Form
               onSubmit={(e) => {
@@ -295,7 +312,7 @@ export default function ResponsiveFooter() {
 
           <LegalCol>
             <LegalNote>
-              © {new Date().getFullYear()} Afarmer — Built with care.
+              © {new Date().getFullYear()} Afarmer — Built By Fred.
             </LegalNote>
             <LegalLinks>
               <LegalLink href="#terms">Terms |</LegalLink>
