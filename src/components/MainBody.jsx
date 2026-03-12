@@ -1,55 +1,9 @@
 import styled from "styled-components";
+import BodyComponent from "./BodyUpComponent";
+import ForFarms from "./ForFarms";
+import ForMarketers from "./ForMarketers";
+import Pricing from "./Pricing";
 
-const MainContainer = styled.div`
-  padding: 20px 40px;
-  background-color: #e5f4ff;
-  color: #000000;
-  @media (max-width: 1200px) {
-    padding: 60px;
-  }
-
-  @media (max-width: 768px) {
-    padding: 50px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 30px;
-  }
-
-  p {
-    font-size: 16px;
-    letter-spacing: 3px;
-    font-weight: 500;
-    line-height: 27.2px;
-    margin-bottom: 45px;
-    font-family: "Montserrat", sans-serif;
-    &:nth-child(3) {
-      font-size: 20px;
-      line-height: 32px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      margin-bottom: 45px;
-    }
-  }
-  h1 {
-    font-size: 42px;
-    line-height: 43.2px;
-    font-weight: 700;
-    line-height: 54.2px;
-    font-family: "Dosis", sans-serif;
-  }
-`;
-const DownloadContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  gap: 5px;
-  a {
-    img {
-      max-width: 110px;
-      height: auto;
-    }
-  }
-`;
 const ImageContainer = styled.div`
   background-image: url("/farming.jpg");
   background-size: cover;
@@ -116,8 +70,8 @@ const BuySellGrowContainers = styled.div`
 
   @media (max-width: 480px) {
     padding: 40px; /* Padding for extra small screens */
-    flex-direction: column; /* Stack items vertically on small screens */
-    gap: 20px; /* Add some spacing between items */
+    flex-direction: column;
+    gap: 20px;
   }
 `;
 
@@ -383,21 +337,23 @@ const Footer = styled.footer`
 `;
 
 function Body() {
+  const heading = "THE MARKETPLACE APP FOR LOCAL FOOD & FARMS";
+  const subheading = "DIRECT FROM THE FARM";
+  const description =
+    "Discover and connect with local food and farms near you.";
+  const bgcolor = "blue";
   return (
     <>
-      <MainContainer>
-        <p>DIRECT FROM THE FARM</p>
-        <h1>THE MARKETPLACE APP FOR LOCAL FOOD & FARMS</h1>
-        <p>Discover and connect with local food and farms near you.</p>
-        <DownloadContainer>
-          <a href="">
-            <img src="/app store.png" alt="google play logo" />
-          </a>
-          <a href="">
-            <img src="/google store.png" alt="app store logo" />
-          </a>
-        </DownloadContainer>
-      </MainContainer>
+      {/* <ForFarms /> */}
+      {/* <BodyComponent
+        heading={heading}
+        subheading={subheading}
+        description={description}
+        bgcolor={bgcolor}
+      /> */}
+      {/* <ForMarketers /> */}
+      <Pricing />
+
       <ImageContainer>
         <img
           loading="lazy"
