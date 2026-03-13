@@ -197,7 +197,7 @@ const LegalLink = styled.a`
   }
 `;
 
-export default function ResponsiveFooter() {
+export default function FooterContainer() {
   return (
     <Footer aria-label="Site footer">
       <Inner>

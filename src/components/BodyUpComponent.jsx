@@ -56,6 +56,7 @@ const MainContainer = styled.div`
     font-weight: 700;
     line-height: 54.2px;
     font-family: "Dosis", sans-serif;
+    text-transform: uppercase;
   }
 `;
 const DownloadContainer = styled.div`

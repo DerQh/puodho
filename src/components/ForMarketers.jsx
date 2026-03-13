@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import BodyComponent from "./BodyUpComponent";
+import Navbar from "./Navbar";
+import FooterContainer from "./Footer";
 
 const MainContainer = styled.div`
   /* display: flex;
@@ -156,6 +158,7 @@ const ForMarketers = () => {
 
   return (
     <>
+      <Navbar />
       <MainContainer>
         {/* Import Body Component */}
         <BodyComponent
@@ -247,6 +250,7 @@ const ForMarketers = () => {
           to help promote our new small homestead." - Benard Onyango
         </p>
       </FeedbackContainer>
+      <FooterContainer />
     </>
   );
 };

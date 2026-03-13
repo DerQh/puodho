@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import BodyComponent from "./BodyUpComponent";
-import ForFarms from "./ForFarms";
-import ForMarketers from "./ForMarketers";
-import Pricing from "./Pricing";
+import Navbar from "./Navbar";
+import FooterContainer from "./Footer";
 
 const ImageContainer = styled.div`
   background-image: url("/farming.jpg");
@@ -99,6 +98,7 @@ const BuySellGrowContainer = styled.div`
     color: #5e5d5d;
   }
 `;
+
 const LearnButton = styled.button`
   background-color: #5c9132;
   color: #fff;
@@ -297,45 +297,6 @@ const FeedbackContainer = styled.div`
   }
 `;
 
-const Footer = styled.footer`
-  display: none;
-  background-color: #77a54f;
-  color: #000000;
-  padding: 20px 40px;
-  font-family: "Montserrat", sans-serif;
-
-  @media (max-width: 1200px) {
-    padding: 60px;
-  }
-
-  @media (max-width: 768px) {
-    padding: 50px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 30px;
-  }
-
-  div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-
-    img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-    }
-
-    h1 {
-      font-size: 24px;
-      font-weight: 700;
-      margin: 0;
-    }
-  }
-`;
-
 function Body() {
   const heading = "THE MARKETPLACE APP FOR LOCAL FOOD & FARMS";
   const subheading = "DIRECT FROM THE FARM";
@@ -344,15 +305,13 @@ function Body() {
   const bgcolor = "blue";
   return (
     <>
-      {/* <ForFarms /> */}
-      {/* <BodyComponent
+      <Navbar />
+      <BodyComponent
         heading={heading}
         subheading={subheading}
         description={description}
         bgcolor={bgcolor}
-      /> */}
-      {/* <ForMarketers /> */}
-      <Pricing />
+      />
 
       <ImageContainer>
         <img
@@ -366,12 +325,12 @@ function Body() {
           <h2>HOW IT WORKS</h2>
           <p>
             We are on a mission to empower local farms and strengthen local food
-            supply chain across Kisumu amd it's environs.
+            supply chain across Kisumu and it's environs.
           </p>
         </HowitWorks>
         <BuySellGrowContainers>
           <BuySellGrowContainer>
-            <img src="/buy.png" alt="buy image" />
+            <img loading="lazy" src="/buy.png" alt="buy image" />
             <h2>Buy</h2>
             <p>
               Search on a map using a keyword for produce that is on sale.
@@ -379,7 +338,7 @@ function Body() {
             </p>
           </BuySellGrowContainer>
           <BuySellGrowContainer>
-            <img src="/sell.png" alt="sell image" />
+            <img loading="lazy" src="/sell.png" alt="sell image" />
             <h2>Sell</h2>
             <p>
               Create a free listing to sell your homegrown produce, chicken
@@ -387,7 +346,7 @@ function Body() {
             </p>
           </BuySellGrowContainer>
           <BuySellGrowContainer>
-            <img src="/grow.png" alt="grow image" />
+            <img loading="lazy" src="/grow.png" alt="grow image" />
             <h2>Grow</h2>
             <p>
               Connect with the consumer and wholesale buyers for your homegrown
@@ -449,37 +408,7 @@ function Body() {
         and now there are over 30 in my village alone! I can't wait to see what
         else Puodo has up their sleeve!" - Jeff Ondoro.
       </FeedbackContainer>
-      <Footer>
-        <div>
-          <img src="/logo1.jpg" alt="logo " />
-          <h1>FARMFRESH</h1>
-        </div>
-        <p>
-          Welcome to fARMfRESH! Our mission is to cnnectt communities with local
-          food sources. Buy and sell garden and farm produce, backyar chicken
-          eggs, supplies, and many more.
-        </p>
-        <div>
-          <a href="">How it Works</a>
-          <a href="">About us</a>
-          <a href="">FAQ</a>
-        </div>
-        <input type="text" placeholder="Email" />
-        <button>Sign Up for News & Updates </button>
-        <p>support@famrfresh.com</p>
-        <div>
-          {/* <img src="" alt="facebook logo" />
-          <img src="" alt="x logo" />
-          <img src="" alt="instagram logo" />
-          <img src="" alt="pintrest logo" /> */}
-        </div>
-        <div>
-          <p>
-            Privacy policy | Terms and Conditions | Cookie Policy | Refunds and
-            Returns
-          </p>
-        </div>
-      </Footer>
+      <FooterContainer />
     </>
   );
 }

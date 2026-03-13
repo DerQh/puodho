@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Navbar from "./Navbar";
+import FooterContainer from "./Footer";
 
 const PricingContainer = styled.div`
   padding: 20px 40px;
@@ -70,84 +72,98 @@ const UpgradeButton = styled.button`
     background-color: #37b3e3;
   }
 `;
+const SpanItem = styled.span`
+  color: #fd7e14;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.3s ease;
 
+  &:hover {
+    color: #37b3e3;
+    text-decoration: underline;
+  }
+`;
 const Pricing = () => {
   return (
-    <PricingContainer>
-      <div>
-        <Heading>
-          Enhance Your Farm's Visibility at No Cost-Start Selling Today!
-        </Heading>
-        <Subheading>
-          Establish a brand, cultivate a following, and generate sales on
-          Farmish.
-        </Subheading>
-        <UpgradeButton>Set Up Your Listing</UpgradeButton>
-      </div>
-      <div>
-        <p>
-          Afarmer s free to join, shop, create listings, and build a
-          personalized profile. Have additional items to sell? Upgrade for
-          unlimited listings with no expiration!
-        </p>
-        {/* // NEXT SECTION */}
-        <UpgradeContainer>
-          <h2>Free Plan</h2>
-          <p>List up to 3 items simultaneously.</p>
-          <ul>
-            <li>
-              Create up to 3 active listings for your farm at any given time.
-            </li>
-            <li>
-              Listings remain active for as long as you need and can be changed
-              whenever you wish.
-            </li>
-            <li>
-              Engage with local buyers and start establishing your presence in
-              the Farmish community—completely free of charge.
-            </li>
-          </ul>
+    <>
+      <Navbar />
+      <PricingContainer>
+        <div>
+          <Heading>
+            Enhance Your Farm's Visibility at No Cost-Start Selling Today!
+          </Heading>
+          <Subheading>
+            Establish a brand, cultivate a following, and generate sales on
+            Farmish.
+          </Subheading>
+          <UpgradeButton>Set Up Your Listing</UpgradeButton>
+        </div>
+        <div>
           <p>
-            Want to expand further?
-            <span>
-              Explore our Unlimited Listings plan for year-round visibility and
-              additional features.
-            </span>
+            Afarmer s free to join, shop, create listings, and build a
+            personalized profile. Have additional items to sell? Upgrade for
+            unlimited listings with no expiration!
           </p>
-          {/* DIVIDER */}
-          <Divider> </Divider>
-          <h2>Limitless Listings</h2>
-          <p>Elevate your farm for only Kes10 per month or Kes99 per year.</p>
-          <ul>
-            <li>
-              Maintain unlimited listings year-round for constant visibility.
-            </li>
-            <li>
-              Establish a permanent landing page to highlight your farm and
-              products.
-            </li>
-            <li>
-              Expand your business without the stress of managing listing
-              limits.
-            </li>
-            <li>
-              Grow your business without the hassle of managing listing
-              restrictions.
-            </li>
-          </ul>
-          <p>
-            Want to expand further? Explore our Unlimited Listings plan for
-            year-round visibility and additional features.
-          </p>
-          <div>
-            <a href="/upgrade">
-              Upgrade Now <span>for Kes10/month or Kes99/year</span>
-            </a>
-          </div>
-          <UpgradeButton>Upgrade Now</UpgradeButton>
-        </UpgradeContainer>
-      </div>
-    </PricingContainer>
+          {/* // NEXT SECTION */}
+          <UpgradeContainer>
+            <h2>Free Plan</h2>
+            <p>List up to 3 items simultaneously.</p>
+            <ul>
+              <li>
+                Create up to 3 active listings for your farm at any given time.
+              </li>
+              <li>
+                Listings remain active for as long as you need and can be
+                changed whenever you wish.
+              </li>
+              <li>
+                Engage with local buyers and start establishing your presence in
+                the Farmish community—completely free of charge.
+              </li>
+            </ul>
+            <p>
+              Want to expand further?
+              <span>
+                Explore our Unlimited Listings plan for year-round visibility
+                and additional features.
+              </span>
+            </p>
+            {/* DIVIDER */}
+            <Divider> </Divider>
+            <h2>Limitless Listings</h2>
+            <p>Elevate your farm for only Kes10 per month or Kes99 per year.</p>
+            <ul>
+              <li>
+                Maintain unlimited listings year-round for constant visibility.
+              </li>
+              <li>
+                Establish a permanent landing page to highlight your farm and
+                products.
+              </li>
+              <li>
+                Expand your business without the stress of managing listing
+                limits.
+              </li>
+              <li>
+                Grow your business without the hassle of managing listing
+                restrictions.
+              </li>
+            </ul>
+            <p>
+              Want to expand further? Explore our Unlimited Listings plan for
+              year-round visibility and additional features.
+            </p>
+            <div>
+              <a href="/upgrade">
+                <SpanItem>Upgrade Now </SpanItem> for Kes10/month or Kes99/year
+              </a>
+            </div>
+            <UpgradeButton>Upgrade Now</UpgradeButton>
+          </UpgradeContainer>
+        </div>
+      </PricingContainer>
+      <FooterContainer />
+    </>
   );
 };
 

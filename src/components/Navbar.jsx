@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import DropDownMenu from "./DropDownMenu";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Nav = styled.nav`
   position: relative;
@@ -77,6 +78,7 @@ const DropdownMenu = styled.div`
 
   li {
     position: relative;
+    cursor: pointer;
 
     a {
       color: white;
@@ -85,7 +87,7 @@ const DropdownMenu = styled.div`
       display: block;
 
       &:hover {
-        background: #45a049; /* Hover color */
+        background: #45a049;
       }
     }
 
@@ -104,23 +106,33 @@ const DropdownMenu = styled.div`
       padding: 10px;
 
       &:hover {
-        background: #388e3c; /* Hover color */
+        background: #388e3c;
       }
     }
   }
 `;
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setisOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setisOpen(!isOpen);
     console.log("Menu toggled:", !isOpen);
+  };
+
+  const closeNav = (path) => {
+    setisOpen(false);
+    navigate(path);
+  };
+
+  const testFunction = () => {
+    console.log("Test fuction, Button clicked");
   };
 
   return (
     <Nav>
-      <LogoContainer>
+      <LogoContainer onClick={() => closeNav("/")}>
         <img src="/logo1.jpg" alt="logo" />
         <h1>AFARMER</h1>
       </LogoContainer>
@@ -130,49 +142,8 @@ export default function Navbar() {
           <div></div>
           <div></div>
         </ToggleIcons>
-        <DropdownMenu>
-          <ul>
-            <li>
-              <a href="">How it works</a>
-              <ul>
-                <li>For Farmers</li>
-                <li>For Buyers</li>
-                <li>Agritourism</li>
-              </ul>
-            </li>
-            <li>
-              <a href="">Pricing</a>
-            </li>
-            <li>
-              <a href="">Local Sourcing</a>
-              <ul>
-                <li>Wholesalers</li>
-              </ul>
-            </li>
-            <li>
-              <a href="">Seller's Guide</a>
-            </li>
-            <li>
-              <a href="">About Us</a>
-              <ul>
-                <li>Our Story</li>
-                <li>Our Values</li>
-                <li>FAQ</li>
-                <li>Team</li>
-                <li>Careers</li>
-                <li>Contact</li>
-              </ul>
-            </li>
-            <li>
-              <a href="">Shop</a>
-            </li>
-            <li>
-              <a href="">Desktop Version of the App</a>
-            </li>
-          </ul>
-        </DropdownMenu>
       </MenuContainer>
-      <DropDownMenu isOpen={isOpen}></DropDownMenu>
+      <DropDownMenu isOpen={isOpen} toggleMenu={closeNav}></DropDownMenu>
     </Nav>
   );
 }

@@ -1,74 +1,84 @@
+import styled from "styled-components";
+import Navbar from "./Navbar";
+import FooterContainer from "./Footer";
+
 const ForFarms = () => {
   return (
-    <MainContainer>
-      <HowItWorksContainer>
-        <h2>How It Works</h2>
-        <p>
-          Have up to 3 active listings at a time for free. Update or swap them
-          anytime, or upgrade to <span>unlimited listings</span> for just
-          Kes10/month!
-        </p>
-      </HowItWorksContainer>
-
-      <ImageDiv>
-        <img src="/For Consumers.png" alt="" />
-      </ImageDiv>
-
-      <Section>
-        <SubSection>
-          <h2>Sell Your Products</h2>
+    <>
+      <Navbar />
+      <MainContainer>
+        <HowItWorksContainer>
+          <h2>How It Works</h2>
           <p>
-            List your fresh produce and connect with local buyers. Our platform
-            makes it easy to showcase your products and manage sales.You can
-            also create event listings for farm tours, U-pick events, classes,
-            plant sales, and any other agriculture-related event.
+            Have up to 3 active listings at a time for free. Update or swap them
+            anytime, or upgrade to <span>unlimited listings</span> for just
+            Kes10/month!
           </p>
-        </SubSection>
-        <SubSection>
-          <Container>
-            <img src="/chat.png" alt="" />
-            <div>
-              <h2>Message with customers</h2>
-              <p>
-                Engage with your buyers using our in-app messaging feature.
-                Avoid sharing irrelevant personal details, but feel free to
-                respond to pertinent inquiries and coordinate an in-person
-                transaction.
-              </p>
-            </div>
-          </Container>
-          <Container>
-            <img src="/deal.png" alt="" />
-            <div>
-              <h2>Make the Sale</h2>
-              <p>
-                Set up your sale as a meetup, porch pickup, roadside farmstand,
-                or another form of in-person exchange. Currently, shipping goods
-                is not available. During the sale, you can receive payment in
-                whichever method suits you best (cash, Venmo, PayPal, etc.).
-              </p>
-            </div>
-          </Container>
-        </SubSection>
-      </Section>
-      <ImageDiv>
-        <img src="/salepic.png" alt="" />
-      </ImageDiv>
-      <BuyLocalContainer>
-        <h2>Buy Local </h2>
-        <p>
-          Search for products by keyword or location, and then contact the
-          seller to arrange a purchase. Payments are processed outside of the
-          app.
-        </p>
-      </BuyLocalContainer>
-    </MainContainer>
+        </HowItWorksContainer>
+
+        <ImageDiv>
+          <img src="/For Consumers.png" alt="" />
+        </ImageDiv>
+
+        <Section>
+          <SubSection>
+            <h2>Sell Your Products</h2>
+            <p>
+              List your fresh produce and connect with local buyers. Our
+              platform makes it easy to showcase your products and manage
+              sales.You can also create event listings for farm tours, U-pick
+              events, classes, plant sales, and any other agriculture-related
+              event.
+            </p>
+          </SubSection>
+          <SubSection>
+            <Container>
+              <img src="/chat.png" alt="" />
+              <div>
+                <h2>Message with customers</h2>
+                <p>
+                  Engage with your buyers using our in-app messaging feature.
+                  Avoid sharing irrelevant personal details, but feel free to
+                  respond to pertinent inquiries and coordinate an in-person
+                  transaction.
+                </p>
+              </div>
+            </Container>
+            <Container>
+              <img src="/deal.png" alt="" />
+              <div>
+                <h2>Make the Sale</h2>
+                <p>
+                  Set up your sale as a meetup, porch pickup, roadside
+                  farmstand, or another form of in-person exchange. Currently,
+                  shipping goods is not available. During the sale, you can
+                  receive payment in whichever method suits you best (cash,
+                  Venmo, PayPal, etc.).
+                </p>
+              </div>
+            </Container>
+          </SubSection>
+        </Section>
+        <ImageDiv>
+          <img src="/salepic.png" alt="" />
+        </ImageDiv>
+        <BuyLocalContainer>
+          <h2>Buy Local </h2>
+          <p>
+            Search for products by keyword or location, and then contact the
+            seller to arrange a purchase. Payments are processed outside of the
+            app.
+          </p>
+        </BuyLocalContainer>
+      </MainContainer>
+      <FooterContainer />
+    </>
   );
 };
 
 export default ForFarms;
 
-import styled from "styled-components";
+
 
 const HowItWorksContainer = styled.div`
   background-color: #fcfbfb;

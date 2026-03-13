@@ -1,31 +1,32 @@
 import styled from "styled-components";
 
-function DropDownMenu({ isOpen }) {
+function DropDownMenu({ isOpen, toggleMenu }) {
   console.log("DropDownMenu rendered with isOpen:", isOpen);
+
   return (
-    <DropDown isOpen={isOpen}>
+    <DropDown isopen={isOpen}>
       <li>
-        <a href="">How it works</a>
+        <h4>How it works</h4>
         <SubDrop>
-          <li>For Farmers</li>
-          <li>For Buyers</li>
-          <li>Agritourism</li>
+          <li onClick={() => toggleMenu("/forfarms")}>For Farmers</li>
+          <li onClick={() => toggleMenu("/for farmersmarket")}>For Buyers</li>
+          <li onClick={() => toggleMenu("/agritourism")}>Agritourism</li>
         </SubDrop>
       </li>
       <li>
-        <a href="">Pricing</a>
+        <h4 onClick={() => toggleMenu("/pricing")}>Pricing</h4>
       </li>
       <li>
-        <a href="">Local Sourcing</a>
+        <h4>Local Sourcing</h4>
         <SubDrop>
           <li>Wholesalers</li>
         </SubDrop>
       </li>
       <li>
-        <a href="">Seller's Guide</a>
+        <h4>Seller's Guide</h4>
       </li>
       <li>
-        <a href="">About Us</a>
+        <h4>About Us</h4>
         <SubDrop>
           <li>Our Story</li>
           <li>Our Values</li>
@@ -36,10 +37,10 @@ function DropDownMenu({ isOpen }) {
         </SubDrop>
       </li>
       <li>
-        <a href="">Shop</a>
+        <h4>Shop</h4>
       </li>
       <li>
-        <a href="">Desktop Version of the App</a>
+        <h4>Desktop Version of the App</h4>
       </li>
     </DropDown>
   );
@@ -59,8 +60,7 @@ const DropDown = styled.ul`
   color: #000000;
   border: 1px solid #ccc;
   border-top: 2px solid #5c9132;
-  /* display: none; */
-  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
+  opacity: ${({ isopen }) => (isopen ? "1" : "0")};
 
   li {
     padding: 8px 12px;
@@ -68,13 +68,14 @@ const DropDown = styled.ul`
     text-decoration: none;
     list-style: none;
 
-    a {
+    h4 {
       font-size: 18px;
       color: #000000;
       font-weight: 600;
       width: 100%;
       padding: 8px 12px;
       border-radius: 4px;
+      margin: 0;
 
       &:hover {
         /* background-color: #dde8f0; */
