@@ -1,25 +1,38 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function DropDownMenu({ isOpen, toggleMenu }) {
-  console.log("DropDownMenu rendered with isOpen:", isOpen);
+  // console.log("DropDownMenu rendered with isOpen:", isOpen);
 
   return (
     <DropDown isopen={isOpen}>
       <li>
         <h4>How it works</h4>
         <SubDrop>
-          <li onClick={() => toggleMenu("/forfarms")}>For Farmers</li>
-          <li onClick={() => toggleMenu("/for farmersmarket")}>For Buyers</li>
-          <li onClick={() => toggleMenu("/agritourism")}>Agritourism</li>
+          <Link to="/forfarms">
+            <li onClick={() => toggleMenu()}>For Farmers</li>
+          </Link>
+          <Link to="/for farmersmarket">
+            <li onClick={() => toggleMenu()}>For Buyers</li>
+          </Link>
+          <Link to="/agritourism">
+            <li onClick={() => toggleMenu()}>Agritourism</li>
+          </Link>
         </SubDrop>
       </li>
       <li>
-        <h4 onClick={() => toggleMenu("/pricing")}>Pricing</h4>
+        <Link to="/pricing">
+          <h4 onClick={() => toggleMenu()}>Pricing</h4>
+        </Link>
       </li>
       <li>
-        <h4>Local Sourcing</h4>
+        <Link to="/localsourcing">
+          <h4 onClick={() => toggleMenu()}>Local Sourcing</h4>
+        </Link>
         <SubDrop>
-          <li>Wholesalers</li>
+          <Link to="/wholesale">
+            <li onClick={() => toggleMenu()}>Wholesalers</li>
+          </Link>
         </SubDrop>
       </li>
       <li>
@@ -55,11 +68,13 @@ const DropDown = styled.ul`
   position: absolute;
   top: 80%;
   right: 30px;
-  left: 35px;
+  left: 30px;
   background-color: #e5f4ff;
   color: #000000;
   border: 1px solid #ccc;
+  border-radius: 5px;
   border-top: 2px solid #5c9132;
+  display: ${({ isopen }) => (isopen ? "block" : "none")};
   opacity: ${({ isopen }) => (isopen ? "1" : "0")};
 
   li {
@@ -73,9 +88,10 @@ const DropDown = styled.ul`
       color: #000000;
       font-weight: 600;
       width: 100%;
-      padding: 8px 12px;
+      padding-left: 8px;
       border-radius: 4px;
       margin: 0;
+      /* background-color: red; */
 
       &:hover {
         /* background-color: #dde8f0; */

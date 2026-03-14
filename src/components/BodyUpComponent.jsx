@@ -59,6 +59,7 @@ const MainContainer = styled.div`
     text-transform: uppercase;
   }
 `;
+
 const DownloadContainer = styled.div`
   display: flex;
   justify-content: flex-start;

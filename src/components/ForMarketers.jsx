@@ -133,6 +133,7 @@ const FeedbackContainer = styled.div`
   background-color: #fff;
   color: #000000;
   p {
+    text-align: center;
     font-size: 16px;
     letter-spacing: 3px;
     font-weight: 500;
@@ -160,7 +161,6 @@ const ForMarketers = () => {
     <>
       <Navbar />
       <MainContainer>
-        {/* Import Body Component */}
         <BodyComponent
           subheading={subheading}
           heading={heading}

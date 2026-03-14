@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import DropDownMenu from "./DropDownMenu";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Nav = styled.nav`
   position: relative;
@@ -118,22 +118,23 @@ export default function Navbar() {
 
   const toggleMenu = () => {
     setisOpen(!isOpen);
-    console.log("Menu toggled:", !isOpen);
+    // console.log("Menu toggled:", !isOpen);
   };
 
-  const closeNav = (path) => {
+  const closeNav = () => {
+    setisOpen(false);
+    // navigate(path);
+  };
+
+  const handleNavigation = (path) => {
     setisOpen(false);
     navigate(path);
   };
 
-  const testFunction = () => {
-    console.log("Test fuction, Button clicked");
-  };
-
   return (
     <Nav>
-      <LogoContainer onClick={() => closeNav("/")}>
-        <img src="/logo1.jpg" alt="logo" />
+      <LogoContainer onClick={() => handleNavigation("/")}>
+        <img loading="lazy" src="/logo1.jpg" alt="logo" />
         <h1>AFARMER</h1>
       </LogoContainer>
       <MenuContainer>
