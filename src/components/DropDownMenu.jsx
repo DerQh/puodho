@@ -41,20 +41,30 @@ function DropDownMenu({ isOpen, toggleMenu }) {
       <li>
         <h4>About Us</h4>
         <SubDrop>
-          <li>Our Story</li>
-          <li>Our Values</li>
-          <li>FAQ</li>
-          <li>Team</li>
-          <li>Careers</li>
-          <li>Contact</li>
+          <Link to="/ourstory">
+            <li onClick={() => toggleMenu()}>Our Story</li>
+          </Link>
+          <Link to="/news">
+            <li onClick={() => toggleMenu()}>News</li>
+          </Link>
+          <Link to="/faq">
+            <li onClick={() => toggleMenu()}>FAQ</li>
+          </Link>
+          <Link to="/contactus">
+            <li onClick={() => toggleMenu()}>Contact</li>
+          </Link>
         </SubDrop>
       </li>
-      <li>
-        <h4>Shop</h4>
-      </li>
-      <li>
-        <h4>Desktop Version of the App</h4>
-      </li>
+      <Link to="/shop">
+        <li>
+          <h4 onClick={() => toggleMenu()}>Shop</h4>
+        </li>
+      </Link>
+      <Link to="/sign-up">
+        <li>
+          <h4 onClick={() => toggleMenu()}>Desktop Version of the App</h4>
+        </li>
+      </Link>
     </DropDown>
   );
 }

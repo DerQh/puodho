@@ -4,7 +4,7 @@ const Footer = styled.footer`
   background-color: #77a54f;
   color: #ffffff;
   font-family: "Dosis", sans-serif;
-  padding: 20px 40px;
+  padding: 50px 40px 10px 40px;
 `;
 
 const Inner = styled.div`
@@ -35,8 +35,8 @@ const Logo = styled.a`
   text-decoration: none;
 
   img {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
   }
 `;
@@ -205,7 +205,6 @@ export default function FooterContainer() {
           <Brand>
             <Logo href="/" aria-label="Homepage">
               <img src="/logo1.jpg" alt="" />
-              {/* <Title>Afarmer</Title> */}
             </Logo>
             <Desc>
               Discover fresh produce, support local farmers, and enjoy.
@@ -213,7 +212,6 @@ export default function FooterContainer() {
           </Brand>
 
           <News>
-            {/* <Heading>Stay in the loop</Heading> */}
             <Note>Subscribe for product updates and tips.</Note>
             <Form
               onSubmit={(e) => {
