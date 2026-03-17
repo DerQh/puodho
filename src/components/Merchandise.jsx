@@ -37,35 +37,34 @@ function Merchandise() {
             <h4>Afarmer Combo Hat</h4>
             <Price>Kes 599</Price>
           </div>
-          <ProductDetails>
-            <div>
-              <label>Color:</label>
+          <>
+            <ChooseContainer>
+              {/* <label>Color:</label> */}
               <select id="color" name="color">
-                <option value="">Choose an option</option>
+                <option value="">Choose Color</option>
                 <option value="red">Red</option>
                 <option value="blue">Blue</option>
                 <option value="green">Green</option>
               </select>
-            </div>
-            <div>
-              <label>Size:</label>
+            </ChooseContainer>
+            <ChooseContainer>
+              {/* <label>Size:</label> */}
               <select id="size" name="size">
-                <option value="">Choose an option</option>
+                <option value="">Choose Size</option>
                 <option value="small">Small</option>
                 <option value="medium">Medium</option>
                 <option value="large">Large</option>
                 <option value="xl">XL</option>
               </select>
-            </div>
-            <div>
-              <a href="#">Size Guide</a>
-              <div>
-                <label htmlFor="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" min="1" />
-                <button type="submit">Add to Cart</button>
-              </div>
-            </div>
-          </ProductDetails>
+            </ChooseContainer>
+            <SizeGuideLink href="#">Size Guide</SizeGuideLink>
+
+            <QuantityContainer>
+              <label htmlFor="quantity">Quantity:</label>
+              <input type="number" id="quantity" name="quantity" min="1" />
+              <button type="submit">Add to Cart</button>
+            </QuantityContainer>
+          </>
         </ShopContent>
         <div>Divider</div>
         <p>
@@ -177,10 +176,6 @@ const ShopTitle = styled.h4`
 `;
 
 const ShopContent = styled.div`
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 20px;
-
   div {
     display: flex;
     flex-direction: column;
@@ -188,11 +183,6 @@ const ShopContent = styled.div`
     /* border: 1px solid #8f8f8f; */
     border-radius: 10px;
     transition: transform 0.2s;
-
-    &:hover {
-      transform: scale(1.05);
-      /* border: 1px solid #000000; */
-    }
 
     img {
       max-width: 100%;
@@ -223,10 +213,10 @@ const Price = styled.p`
 `;
 
 const ProductDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  /* display: grid;
+  align-items: start;
+  gap: 10px;*/
+  text-align: start;
 `;
 
 const ReviewForm = styled.form`
@@ -280,5 +270,63 @@ const ReviewForm = styled.form`
     button {
       width: 100%;
     }
+  }
+`;
+
+const ChooseContainer = styled.div`
+  margin-bottom: 15px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+`;
+
+const QuantityContainer = styled.div`
+  display: flex;
+  align-items: center; /* Vertical alignment for flex items */
+  margin-top: 10px;
+
+  label {
+    margin-right: 10px; /* Space between label and input */
+  }
+
+  input {
+    width: 40px; /* Fixed width for quantity input */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px; /* Space between input and button */
+  }
+
+  button {
+    background-color: #28a745; /* Green color for button */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: #218838; /* Darker green on hover */
+    }
+  }
+`;
+
+const SizeGuideLink = styled.a`
+  margin-top: 10px;
+  display: inline-block; /* Ensure it's treated as a block-level element for spacing */
+  color: #007bff; /* Link color */
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline; /* Underline on hover */
   }
 `;

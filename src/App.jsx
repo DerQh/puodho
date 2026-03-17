@@ -9,7 +9,7 @@ import LocalSourcing from "./components/LocalSourcing";
 import ContactUs from "./components/ContactUs";
 import News from "./components/News";
 import Shop from "./components/Shop";
-import SignupLogin from "./SignupLogin";
+import SignupLogin from "./components/SignupLogin";
 import AboutUs from "./components/AboutUs";
 import FAQ from "./components/FaQ";
 import Merchandise from "./components/Merchandise";

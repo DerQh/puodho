@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Footer = styled.footer`
-  background-color: #77a54f;
+  background-color: rgb(97, 152, 49);
   color: #ffffff;
   font-family: "Dosis", sans-serif;
   padding: 50px 40px 10px 40px;
