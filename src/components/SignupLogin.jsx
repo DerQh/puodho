@@ -1,12 +1,15 @@
 function SignupLogin() {
   return (
     <MainContainer>
+      <Link to="/">
+        <div>
+          <Logo src="/logo1.jpg" alt="Logo" />
+          <Title>AFARMER</Title>
+        </div>
+      </Link>
+
       <div>
-        <Logo src="/logo1.jpg" alt="Logo" />
-        <Title>AFARMER</Title>
-      </div>
-      <div>
-        <Image src="/food-chain.png" alt="" />
+        {/* <Image src="/food-chain.png" alt="" /> */}
         <Subtitle>Connecting Farmers and Consumers</Subtitle>
         <Description>
           AFARMER is a platform that connects local farmers with consumers,
@@ -36,6 +39,7 @@ function SignupLogin() {
 
 export default SignupLogin;
 
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const MainContainer = styled.div`
@@ -57,6 +61,7 @@ const Logo = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  cursor: pointer;
 `;
 
 const Title = styled.h1`

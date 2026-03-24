@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Navbar from "./Navbar";
+import FooterContainer from "./Footer";
 
 const NewsContainer = styled.div`
   display: flex;
@@ -19,14 +21,18 @@ const NewsContent = styled.p`
 
 function News() {
   return (
-    <NewsContainer>
-      <NewsTitle>News</NewsTitle>
-      <NewsContent>
-        Welcome to our news section! Here you can find the latest updates and
-        information related to farming and agriculture. Stay tuned for more
-        news and announcements.
-      </NewsContent>
-    </NewsContainer>
+    <>
+      <Navbar></Navbar>
+      <NewsContainer>
+        <NewsTitle>News</NewsTitle>
+        <NewsContent>
+          Welcome to our news section! Here you can find the latest updates and
+          information related to farming and agriculture. Stay tuned for more
+          news and announcements.
+        </NewsContent>
+      </NewsContainer>
+      <FooterContainer></FooterContainer>
+    </>
   );
 }
 

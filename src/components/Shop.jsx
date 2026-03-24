@@ -30,6 +30,7 @@ const ShopContent = styled.div`
     border-radius: 10px;
     transition: transform 0.2s;
     margin-bottom: 20px;
+    min-height: 350px;
 
     &:hover {
       transform: scale(1.05);

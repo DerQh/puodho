@@ -41,7 +41,7 @@ function DropDownMenu({ isOpen, toggleMenu }) {
       <li>
         <h4>About Us</h4>
         <SubDrop>
-          <Link to="/ourstory">
+          <Link to="/aboutus">
             <li onClick={() => toggleMenu()}>Our Story</li>
           </Link>
           <Link to="/news">

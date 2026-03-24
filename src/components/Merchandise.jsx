@@ -173,6 +173,11 @@ const ShopTitle = styled.h4`
   font-weight: 600;
   text-align: start;
   margin-bottom: 40px;
+  cursor: pointer;
+
+  &:hover {
+    font-weight: 650;
+  }
 `;
 
 const ShopContent = styled.div`
