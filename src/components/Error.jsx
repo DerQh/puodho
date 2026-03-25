@@ -1,13 +1,14 @@
 import styled from "styled-components";
-import FooterContainer from "./Footer";
 import Navbar from "./Navbar";
-import { useRouteError } from "react-router-dom";
 
 const ErrorContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  margin: auto;
   padding: 20px 40px;
+  height: 100dvh;
 `;
 
 const ErrorTitle = styled.h1`
@@ -21,20 +22,16 @@ const ErrorContent = styled.p`
 `;
 
 function ErrorDisplay() {
-  const error = useRouteError();
-  console.error(error);
-
   return (
     <>
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
       <ErrorContainer>
         <ErrorTitle>Ooops .. </ErrorTitle>
         <ErrorContent>
-          Something went wrong! Please try again later. Sorry, an unexpected
-          error has occurred. Please refresh the page or try again later.
+          The page you are looking for does not exist. Please check the URL and
+          try again......
         </ErrorContent>
       </ErrorContainer>
-      <FooterContainer></FooterContainer>
     </>
   );
 }
