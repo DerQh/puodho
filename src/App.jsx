@@ -1,4 +1,9 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  createBrowserRouter,
+  BrowserRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
 import Wholesale from "./components/Wholesale";
 import ForFarms from "./components/ForFarms";
 import MainBody from "./components/MainBody";
@@ -13,6 +18,7 @@ import SignupLogin from "./components/SignupLogin";
 import AboutUs from "./components/AboutUs";
 import FAQ from "./components/FaQ";
 import Merchandise from "./components/Merchandise";
+import ErrorDisplay from "./components/Error";
 
 function App() {
   return (
@@ -35,6 +41,7 @@ function App() {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/shop/item" element={<Merchandise />} />
+          <Route path="*" element={<ErrorDisplay />} />
         </Routes>
       </BrowserRouter>
     </>

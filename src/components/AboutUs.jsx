@@ -187,7 +187,7 @@ const AboutUs = () => {
         </div>
       </AboutUsContainer>
       <FounderContainer>
-        <img loading="lazy" src="/public/founder.jpg" alt="founder picture" />
+        <img loading="lazy" src="/founder.jpg" alt="founder picture" />
         <h4>HI ! I'M FRED</h4>
         <p>
           I'm a father living in Kisumu, Kenya. Founder of AFARMER. I’m
