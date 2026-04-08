@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Navbar from "./Navbar";
 import FooterContainer from "./Footer";
+import Navbar from "./Navbar";
 
 const ForFarms = () => {
   return (

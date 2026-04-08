@@ -18,3 +18,11 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+
+html,
+body,
+#root {
+  /* height: 100dvh; */
+  height: 100%;
+}

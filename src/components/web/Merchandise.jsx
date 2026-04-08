@@ -28,7 +28,7 @@ function Merchandise() {
   };
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar />
       <ShopContainer>
         <ShopTitle>Home / Accesories / Item name</ShopTitle>
         <ShopContent>
