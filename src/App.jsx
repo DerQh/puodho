@@ -20,13 +20,28 @@ import FAQ from "./components/web/FaQ";
 import Merchandise from "./components/web/Merchandise";
 import ErrorDisplay from "./components/web/Error";
 import Map from "./components/app/Map";
+import Following from "./components/app/Following";
+import List from "./components/app/List";
+import Messages from "./components/app/Messages";
+import Profile from "./components/app/Profile";
+import Community from "./components/app/Community";
+import NewListing from "./components/app/ListingNew";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/map" element={<Map />} />
+          {/* APP ROUTES */}
+          <Route path="/app" element={<Map />} />
+          <Route path="/following" element={<Following />} />
+          <Route path="/list" element={<List />} />
+          <Route path="/messages" element={<Messages />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/newlist" element={<NewListing />} />
+
+          {/* WEB ROUTES */}
           <Route path="/" element={<MainBody />} />
           <Route path="/forfarms" element={<ForFarms />} />
           <Route path="/for farmersmarket" element={<ForMarketers />} />

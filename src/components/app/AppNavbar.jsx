@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import DropDownApp from "../web/DropDownApp";
+import DropDownApp from "./DropDownApp";
 
 const Nav = styled.nav`
   position: relative;
@@ -92,7 +92,7 @@ export default function AppNavbar() {
       </LogoContainer>
       <MenuContainer>
         <ToggleIcons onClick={toggleMenu}>
-          <img src="/public/founder.jpg" alt="profile image" />
+          <img src="/founder.jpg" alt="profile image" />
         </ToggleIcons>
       </MenuContainer>
       <DropDownApp isOpen={isOpen} toggleMenu={closeNav}></DropDownApp>

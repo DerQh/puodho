@@ -6,37 +6,37 @@ function DropDownApp({ isOpen, toggleMenu }) {
 
   return (
     <DropDown isopen={isOpen}>
-      <Link to="/sign-up">
+      <Link to="/list">
         <li>
           <h4 onClick={() => toggleMenu()}>List & Sell</h4>
         </li>
       </Link>
-      <Link to="/sign-up">
+      <Link to="/following">
         <li>
           <h4 onClick={() => toggleMenu()}>Following</h4>
         </li>
       </Link>
-      <Link to="/sign-up">
+      <Link to="/messages">
         <li>
           <h4 onClick={() => toggleMenu()}>Messages</h4>
         </li>
       </Link>
-      <Link to="/sign-up">
+      <Link to="/profile">
         <li>
           <h4 onClick={() => toggleMenu()}>View Profile</h4>
         </li>
       </Link>
-      <Link to="/sign-up">
+      <Link to="/account">
         <li>
           <h4 onClick={() => toggleMenu()}>Account Info</h4>
         </li>
       </Link>
-      <Link to="/shop">
+      <Link to="/community">
         <li>
           <h4 onClick={() => toggleMenu()}>Community</h4>
         </li>
       </Link>
-      <Link to="/sign-up">
+      <Link to="/">
         <li>
           <h4 onClick={() => toggleMenu()}>Sign Out</h4>
         </li>

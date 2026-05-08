@@ -1,7 +1,36 @@
+
 import styled from "styled-components";
 import Navbar from "./Navbar";
 import FooterContainer from "./Footer";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
+const product = {
+  name: "Afarmer Combo Hat",
+  price: "Kes 599",
+  description:
+    "This premium Afarmer Combo Hat is crafted from soft cotton and designed for a comfortable fit with a bold, modern silhouette.",
+  image: "/shop/hat.jpg",
+  category: "Accessories",
+  details: [
+    "Weight: 0.5kg",
+    "Dimensions: 20cm x 15cm x 10cm",
+    "Material: 100% Cotton",
+  ],
+};
+
+const colors = [
+  { value: "black", label: "Black" },
+  { value: "white", label: "White" },
+  { value: "green", label: "Green" },
+];
+
+const sizes = [
+  { value: "small", label: "Small" },
+  { value: "medium", label: "Medium" },
+  { value: "large", label: "Large" },
+  { value: "xl", label: "XL" },
+];
 
 function Merchandise() {
   const [review, setReview] = useState({
@@ -11,153 +40,222 @@ function Merchandise() {
     comment: "",
   });
 
-  const handleChange = (e) => {
+  const [productOptions, setProductOptions] = useState({
+    color: "",
+    size: "",
+    quantity: 1,
+  });
+
+  const [cartMessage, setCartMessage] = useState("");
+  const [reviewMessage, setReviewMessage] = useState("");
+
+  const handleReviewChange = (e) => {
     const { name, value } = e.target;
     setReview((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: name === "rating" ? Number(value) : value,
     }));
+  };
+
+  const handleOptionChange = (e) => {
+    const { name, value } = e.target;
+    setProductOptions((prev) => ({
+      ...prev,
+      [name]:
+        name === "quantity"
+          ? Math.max(1, Number(value) || 1)
+          : value,
+    }));
+  };
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+
+    if (!productOptions.color || !productOptions.size) {
+      setCartMessage("Please choose a color and size before adding to cart.");
+      return;
+    }
+
+    setCartMessage(
+      `Added ${productOptions.quantity} ${product.name} (${productOptions.color}, ${productOptions.size}) to cart.`
+    );
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle review submission logic (e.g., send to API)
+
+    if (!review.rating || !review.comment.trim()) {
+      setReviewMessage("Please provide a rating and a review comment.");
+      return;
+    }
+
+    setReviewMessage("Thank you! Your review has been submitted.");
     console.log("Review submitted:", review);
-    // Reset form
     setReview({ name: "", email: "", rating: 0, comment: "" });
   };
+
   return (
     <>
       <Navbar />
       <ShopContainer>
-        <ShopTitle>Home / Accesories / Item name</ShopTitle>
-        <ShopContent>
-          <div>
-            <img loading="lazy" src="/shop/hat.jpg" alt="Hat" />
-            <h4>Afarmer Combo Hat</h4>
-            <Price>Kes 599</Price>
-          </div>
-          <>
-            <ChooseContainer>
-              {/* <label>Color:</label> */}
-              <select id="color" name="color">
+        <Breadcrumbs>
+          <Link to="/shop">Shop</Link>
+          <span>/ Accessories /</span>
+          <strong>{product.name}</strong>
+        </Breadcrumbs>
+
+        <ProductLayout>
+          <ImageCard>
+            <img loading="lazy" src={product.image} alt={product.name} />
+          </ImageCard>
+
+          <ProductSummary>
+            <ProductTitle>{product.name}</ProductTitle>
+            <Price>{product.price}</Price>
+            <ProductText>{product.description}</ProductText>
+
+            <OptionRow>
+              <label htmlFor="color">Color</label>
+              <select
+                id="color"
+                name="color"
+                value={productOptions.color}
+                onChange={handleOptionChange}
+              >
                 <option value="">Choose Color</option>
-                <option value="red">Red</option>
-                <option value="blue">Blue</option>
-                <option value="green">Green</option>
+                {colors.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
               </select>
-            </ChooseContainer>
-            <ChooseContainer>
-              {/* <label>Size:</label> */}
-              <select id="size" name="size">
+            </OptionRow>
+
+            <OptionRow>
+              <label htmlFor="size">Size</label>
+              <select
+                id="size"
+                name="size"
+                value={productOptions.size}
+                onChange={handleOptionChange}
+              >
                 <option value="">Choose Size</option>
-                <option value="small">Small</option>
-                <option value="medium">Medium</option>
-                <option value="large">Large</option>
-                <option value="xl">XL</option>
+                {sizes.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
               </select>
-            </ChooseContainer>
-            <SizeGuideLink href="#">Size Guide</SizeGuideLink>
+              <SizeGuideLink href="#">Size Guide</SizeGuideLink>
+            </OptionRow>
 
-            <QuantityContainer>
-              <label htmlFor="quantity">Quantity:</label>
-              <input type="number" id="quantity" name="quantity" min="1" />
-              <button type="submit">Add to Cart</button>
-            </QuantityContainer>
-          </>
-        </ShopContent>
-        <div>Divider</div>
-        <p>
-          SKU: N/A Category: <span>Acessories</span>
-        </p>
-        <div>
-          <p>Description</p>
-          <p> Additonal Information</p>
-          <p>Reviews</p>
-          <div>
-            <div>
-              <h4>Description</h4>
-              <p>
-                This is a high-quality Afarmer Combo Hat, perfect for any
-                occasion.
-              </p>
-            </div>
-            <div>
-              <h4>Customer Reviews</h4>
-              <p>
-                There are no reviews yet. Be the first to review “Yard Fresh &
-                Local T-shirt” Your email address will not be published.
-                Required fields are marked *
-              </p>
+            <QuantityForm onSubmit={handleAddToCart}>
+              <label htmlFor="quantity">Quantity</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                min="1"
+                value={productOptions.quantity}
+                onChange={handleOptionChange}
+              />
+              <AddButton type="submit">Add to Cart</AddButton>
+            </QuantityForm>
 
-              <ReviewForm onSubmit={handleSubmit}>
-                <label htmlFor="rating">Your rating *</label>
-                <div className="rating">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <label key={star}>
-                      <input
-                        type="radio"
-                        name="rating"
-                        value={star}
-                        onChange={handleChange}
-                        checked={review.rating === star}
-                      />
-                      {star}
-                    </label>
-                  ))}
-                </div>
+            {cartMessage && <StatusMessage>{cartMessage}</StatusMessage>}
 
-                <label htmlFor="comment">Your review *</label>
-                <textarea
-                  id="comment"
-                  name="comment"
-                  rows="4"
-                  value={review.comment}
-                  onChange={handleChange}
-                  required
-                />
+            <ProductMeta>
+              <span>SKU: N/A</span>
+              <span>Category: {product.category}</span>
+            </ProductMeta>
+          </ProductSummary>
+        </ProductLayout>
 
-                <label htmlFor="name">Name *</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={review.name}
-                  onChange={handleChange}
-                  required
-                />
+        <ProductDetails>
+          <Section>
+            <SectionTitle>Description</SectionTitle>
+            <SectionText>{product.description}</SectionText>
+          </Section>
 
-                <label htmlFor="email">Email *</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={review.email}
-                  onChange={handleChange}
-                  required
-                />
+          <Section>
+            <SectionTitle>Additional Information</SectionTitle>
+            <InfoList>
+              {product.details.map((detail) => (
+                <li key={detail}>{detail}</li>
+              ))}
+            </InfoList>
+          </Section>
 
-                <div className="save-info">
-                  <input type="checkbox" id="save-info" />
-                  <label htmlFor="save-info">
-                    Save my name, email, and website in this browser for the
-                    next time I comment.
-                  </label>
-                </div>
+          <Section>
+            <SectionTitle>Customer Reviews</SectionTitle>
+            <ReviewIntro>
+              There are no reviews yet. Be the first to review “{product.name}
+              ”. Your email address will not be published. Required fields are
+              marked *.
+            </ReviewIntro>
 
-                <button type="submit">Submit Review</button>
-              </ReviewForm>
-            </div>
-            <div>
-              <h4>Additional Information</h4>
-              <p>Weight: 0.5kg</p>
-              <p>Dimensions: 20cm x 15cm x 10cm</p>
-              <p>Material: 100% Cotton</p>
-            </div>
-          </div>
-        </div>
+            <ReviewForm onSubmit={handleSubmit}>
+              <label>Your rating *</label>
+              <RatingGroup role="radiogroup" aria-label="Product rating">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <RatingLabel key={star}>
+                    <input
+                      type="radio"
+                      name="rating"
+                      value={star}
+                      onChange={handleReviewChange}
+                      checked={review.rating === star}
+                    />
+                    <Star>{star}</Star>
+                  </RatingLabel>
+                ))}
+              </RatingGroup>
+
+              <label htmlFor="comment">Your review *</label>
+              <textarea
+                id="comment"
+                name="comment"
+                rows="4"
+                value={review.comment}
+                onChange={handleReviewChange}
+                required
+              />
+
+              <label htmlFor="name">Name *</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={review.name}
+                onChange={handleReviewChange}
+                required
+              />
+
+              <label htmlFor="email">Email *</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={review.email}
+                onChange={handleReviewChange}
+                required
+              />
+
+              <div className="save-info">
+                <input type="checkbox" id="save-info" />
+                <label htmlFor="save-info">
+                  Save my name and email for next time.
+                </label>
+              </div>
+
+              {reviewMessage && <StatusMessage>{reviewMessage}</StatusMessage>}
+
+              <button type="submit">Submit Review</button>
+            </ReviewForm>
+          </Section>
+        </ProductDetails>
       </ShopContainer>
-      <FooterContainer></FooterContainer>
+      <FooterContainer />
     </>
   );
 }
@@ -166,73 +264,199 @@ export default Merchandise;
 
 const ShopContainer = styled.div`
   padding: 40px;
+  max-width: 1180px;
+  margin: 0 auto;
 `;
 
-const ShopTitle = styled.h4`
-  font-size: 16px;
-  font-weight: 600;
-  text-align: start;
+const Breadcrumbs = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+
+  a {
+    color: #2f6f2a;
+    text-decoration: none;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+`;
+
+const ProductLayout = styled.div`
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: start;
   margin-bottom: 40px;
-  cursor: pointer;
 
-  &:hover {
-    font-weight: 650;
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
   }
 `;
 
-const ShopContent = styled.div`
-  div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* border: 1px solid #8f8f8f; */
-    border-radius: 10px;
-    transition: transform 0.2s;
+const ImageCard = styled.div`
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f7f7f7;
+  padding: 16px;
 
-    img {
-      max-width: 100%;
-      max-height: 400px;
-      height: auto;
-      min-height: 150px;
-      object-fit: cover;
-      padding-bottom: 20px;
-    }
-
-    h4 {
-      font-size: 34px;
-      font-weight: 700;
-      margin: 10px 0 0 0;
-      text-align: start;
-      width: 100%;
-    }
+  img {
+    width: 100%;
+    max-height: 520px;
+    object-fit: cover;
+    border-radius: 12px;
   }
+`;
+
+const ProductSummary = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+`;
+
+const ProductTitle = styled.h1`
+  font-size: 2.5rem;
+  margin: 0;
+`;
+
+const ProductText = styled.p`
+  line-height: 1.75;
+  color: #444;
 `;
 
 const Price = styled.p`
-  width: 100%;
-  text-align: start;
-  font-size: 24px;
+  font-size: 2rem;
   color: #ffb300;
-  font-weight: 600;
-  margin: 10px 0 0 0;
+  font-weight: 700;
+  margin: 0;
+`;
+
+const OptionRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+
+  label {
+    font-weight: 600;
+    min-width: 70px;
+  }
+
+  select {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    min-width: 220px;
+    background: #fff;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+`;
+
+const SizeGuideLink = styled.a`
+  color: #2f6f2a;
+  text-decoration: none;
+  font-size: 0.95rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const QuantityForm = styled.form`
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 12px;
+  align-items: center;
+
+  label {
+    font-weight: 600;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const AddButton = styled.button`
+  padding: 12px 20px;
+  background-color: #5c9132;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 140px;
+
+  &:hover {
+    background-color: #4a7228;
+  }
+`;
+
+const ProductMeta = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #666;
+  font-size: 0.95rem;
 `;
 
 const ProductDetails = styled.div`
-  /* display: grid;
-  align-items: start;
-  gap: 10px;*/
+  display: grid;
+  gap: 32px;
   text-align: start;
+`;
+
+const Section = styled.section`
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+`;
+
+const SectionTitle = styled.h2`
+  margin: 0 0 16px;
+  font-size: 1.5rem;
+`;
+
+const SectionText = styled.p`
+  line-height: 1.8;
+  color: #444;
+  margin: 0;
+`;
+
+const InfoList = styled.ul`
+  margin: 0;
+  padding-left: 18px;
+  color: #444;
+
+  li {
+    margin-bottom: 10px;
+  }
+`;
+
+const ReviewIntro = styled.p`
+  margin: 0 0 16px;
+  line-height: 1.7;
+  color: #555;
 `;
 
 const ReviewForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 15px;
-
-  .rating {
-    display: flex;
-    gap: 10px;
-  }
+  gap: 18px;
 
   label {
     font-weight: 600;
@@ -243,31 +467,31 @@ const ReviewForm = styled.form`
   input[type="email"],
   input[type="number"] {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
     resize: vertical;
   }
 
   .save-info {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
   }
 
   button {
-    width: 150px;
-    padding: 10px;
+    width: 180px;
+    padding: 12px 18px;
     background-color: #5c9132;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
 
     &:hover {
-      background-color: #4a6f24;
+      background-color: #4a7228;
     }
   }
 
@@ -278,60 +502,41 @@ const ReviewForm = styled.form`
   }
 `;
 
-const ChooseContainer = styled.div`
-  margin-bottom: 15px;
-
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-
-  select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+const RatingGroup = styled.div`
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 `;
 
-const QuantityContainer = styled.div`
-  display: flex;
-  align-items: center; /* Vertical alignment for flex items */
-  margin-top: 10px;
-
-  label {
-    margin-right: 10px; /* Space between label and input */
-  }
+const RatingLabel = styled.label`
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
 
   input {
-    width: 40px; /* Fixed width for quantity input */
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px; /* Space between input and button */
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
   }
 
-  button {
-    background-color: #28a745; /* Green color for button */
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 4px;
-
-    &:hover {
-      background-color: #218838; /* Darker green on hover */
-    }
+  &:hover {
+    background: #f3fff0;
   }
 `;
 
-const SizeGuideLink = styled.a`
-  margin-top: 10px;
-  display: inline-block; /* Ensure it's treated as a block-level element for spacing */
-  color: #007bff; /* Link color */
-  text-decoration: none;
+const Star = styled.span`
+  font-size: 1rem;
+  color: #333;
+`;
 
-  &:hover {
-    text-decoration: underline; /* Underline on hover */
-  }
+const StatusMessage = styled.div`
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: #eef9ed;
+  color: #266226;
+  font-size: 0.95rem;
 `;

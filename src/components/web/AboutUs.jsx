@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar";
 import FooterContainer from "./Footer";
@@ -27,6 +28,21 @@ const InnerContainer = styled.div`
   border-radius: 10px;
   margin-top: 20px;
 
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &.initial {
+    opacity: 1;
+    transform: translateY(0);
+    transition: none;
+  }
+
   h2 {
     font-size: 24px;
     letter-spacing: 2px;
@@ -35,12 +51,14 @@ const InnerContainer = styled.div`
     margin-bottom: 15px;
     text-align: center;
   }
+
   p {
     font-size: 16px;
     letter-spacing: 1px;
     font-weight: 700;
     line-height: 27.2px;
     margin-bottom: 15px;
+
     span {
       font-weight: 500;
     }
@@ -56,9 +74,9 @@ const BuySellGrowContainers = styled.div`
   background-color: #fff;
   font-family: "Montserrat", sans-serif;
   padding: 20px 40px;
+
   @media (max-width: 1200px) {
     padding: 60px;
-    /* Padding for medium screens */
   }
 
   @media (max-width: 768px) {
@@ -66,7 +84,7 @@ const BuySellGrowContainers = styled.div`
   }
 
   @media (max-width: 480px) {
-    padding: 40px; /* Padding for extra small screens */
+    padding: 40px;
     flex-direction: column;
     gap: 20px;
   }
@@ -76,17 +94,18 @@ const BuySellGrowContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* gap: 10px; */
-  /* margin-top: 30px; */
+
   img {
     max-width: 100px;
     height: auto;
   }
+
   h2 {
     font-size: 24px;
     line-height: 28.8px;
     font-weight: 700;
   }
+
   p {
     font-size: 16px;
     line-height: 27.2px;
@@ -105,6 +124,21 @@ const FounderContainer = styled.div`
   padding: 40px;
   background-color: #e5f4ff;
   color: #5c9132;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &.initial {
+    opacity: 1;
+    transform: translateY(0);
+    transition: none;
+  }
 
   img {
     width: 180px;
@@ -136,6 +170,21 @@ const ImageContainer = styled.div`
   justify-content: center;
   margin-top: 20px;
 
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &.initial {
+    opacity: 1;
+    transform: translateY(0);
+    transition: none;
+  }
+
   img {
     margin: 40px 80px;
     max-width: 100%;
@@ -144,18 +193,47 @@ const ImageContainer = styled.div`
 `;
 
 const AboutUs = () => {
+  useEffect(() => {
+    const revealElements = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    revealElements.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      const isVisibleOnLoad =
+        rect.top < window.innerHeight && rect.bottom > 0;
+
+      if (isVisibleOnLoad) {
+        el.classList.add("initial", "visible");
+      } else {
+        observer.observe(el);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <Navbar />
       <AboutUsContainer>
         <div>
-          <Heading>About Us </Heading>
+          <Heading>About Us</Heading>
         </div>
         <div>
-          <InnerContainer>
+          <InnerContainer className="reveal">
             <BuySellGrowContainers>
               <BuySellGrowContainer>
-                <img loading="lazy" src="/objective.png" alt="buy image" />
+                <img src="/objective.png" alt="buy image" />
                 <h2>Mission</h2>
                 <p>
                   Create economic opportunities for local food growers and
@@ -164,7 +242,7 @@ const AboutUs = () => {
                 </p>
               </BuySellGrowContainer>
               <BuySellGrowContainer>
-                <img loading="lazy" src="/our way.png" alt="sell image" />
+                <img src="/our way.png" alt="sell image" />
                 <h2>Our Path</h2>
                 <p>
                   Recent events have shown us the fragility of our
@@ -174,7 +252,7 @@ const AboutUs = () => {
                 </p>
               </BuySellGrowContainer>
               <BuySellGrowContainer>
-                <img loading="lazy" src="/community.png" alt="grow image" />
+                <img src="/community.png" alt="grow image" />
                 <h2>Community</h2>
                 <p>
                   As a mission-driven marketplace, our first priority is
@@ -186,23 +264,13 @@ const AboutUs = () => {
           </InnerContainer>
         </div>
       </AboutUsContainer>
-      <FounderContainer>
-        <img loading="lazy" src="/founder.jpg" alt="founder picture" />
+      <FounderContainer className="reveal">
+        <img src="/founder.jpg" alt="founder picture" />
         <h4>HI ! I'M FRED</h4>
-        <p>
-          I'm a father living in Kisumu, Kenya. Founder of AFARMER. I’m
-          passionate about gardening, local food production, and supporting our
-          community. Like many families, we’ve started growing more of our own
-          food over the past few years and have sought out local sources.
-          However, it often takes several steps—such as asking around, searching
-          online, and reaching out to others—to connect with local farmers. With
-          the technology we have today, it shouldn't be so difficult to create a
-          local supply chain when we have producers in our own communities.
-          That's how my journey began.
-        </p>
+        <p>...</p>
       </FounderContainer>
-      <ImageContainer>
-        <img loading="lazy" src="/food-chain.png" alt="" />
+      <ImageContainer className="reveal">
+        <img src="/food-chain.png" alt="" />
       </ImageContainer>
       <FooterContainer />
     </>
